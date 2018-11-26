@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.bukkit.GameMode;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,18 +49,13 @@ public class Main extends JavaPlugin implements Listener {
 
 	@Override
 	public void onDisable() {
-		this.log("Starting rollback...");
-		World world = this.getServer().getWorld("lobby");
-		File folder = world.getWorldFolder();
-		if (world != null) {
-			this.getServer().unloadWorld(world, true);
-		}
+		String lobby = this.getConfig().getString("Lobby");
 		String backupFolderName = this.getConfig().getString("Backup-Lobby");
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			System.out.println("Resetting lobby...");
-			this.copyWorld(new File(backupFolderName), folder);
+			this.log("Initializing the lobby...");
+			this.copyWorld(new File(backupFolderName), new File(lobby));
+			this.log("Initialized the lobby!");
 		}));
-		this.log("Rollback done!");
 	}
 
 	public void log(String log) {

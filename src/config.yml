@@ -1,4 +1,15 @@
+# Whether copying the world from the backup after stopping the server
+Reset: true
+
+# Your server's lobby world
 Lobby: lobby
+
+# Lobby backup folder
 Backup-Lobby: lobbyBackup
+
+# Reset OP when participating in the player (See "Auto-OP" for conditions)
+Reset-OP-On-Join: true
+
+# List of criteria to reset (Administrator UUID list)
 Auto-OP:
 - "b0bb65a2-832f-4a5d-854e-873b7c4522ed"

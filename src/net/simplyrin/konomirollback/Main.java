@@ -73,6 +73,13 @@ public class Main extends JavaPlugin implements Listener {
 		}
 	}
 
+	/**
+	 * @param source
+	 * @param target
+	 *
+	 * Copy world code from bukkit.org
+	 * URL: https://bukkit.org/threads/unload-delete-copy-worlds.182814/
+	 */
 	public void copyWorld(File source, File target) {
 		try {
 			ArrayList<String> ignore = new ArrayList<String>(Arrays.asList("uid.dat", "session.dat"));
